@@ -8,6 +8,7 @@ namespace Day1Solver
         {
             var solver = new Solver(new InputProvider());
             Console.WriteLine($"Solution for Day 1 is {solver.SolveProblem()}");
+            Console.WriteLine($"Bonus solution for Day 1 is {solver.SolveBonusProblem()}");
         }
     }
 }
