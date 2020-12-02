@@ -8,12 +8,12 @@ namespace Day1Solver
     {
         private const string InputFilePath = @"Input\Day1.txt";
 
-        public IEnumerable<int> ProvideInput()
+        public async IAsyncEnumerable<int> ProvideInputAsync()
         {
             using var reader = new StreamReader(InputFilePath);
 
             string line;
-            while ((line = reader.ReadLine()) != null)
+            while ((line = await reader.ReadLineAsync()) != null)
                 yield return Convert.ToInt32(line);
         }
     }

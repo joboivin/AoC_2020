@@ -2,6 +2,8 @@
 using FluentAssertions;
 using NSubstitute;
 using System;
+using System.Linq;
+using System.Threading.Tasks;
 using Xunit;
 
 namespace Day1SolverTests
@@ -18,41 +20,41 @@ namespace Day1SolverTests
         }
 
         [Fact]
-        public void SolveProblem_When2NumbersAddUpTo2020_ThenReturnsProductOfThoseNumbers()
+        public async Task SolveProblemAsync_When2NumbersAddUpTo2020_ThenReturnsProductOfThoseNumbers()
         {
-            _inputProvider.ProvideInput().Returns(new[] { 1721, 979, 366, 299, 675, 1456 });
+            _inputProvider.ProvideInputAsync().Returns(new[] { 1721, 979, 366, 299, 675, 1456 }.ToAsyncEnumerable());
 
-            var result = _subject.SolveProblem();
+            var result = await _subject.SolveProblemAsync();
 
             result.Should().Be(514579, "the product of 1721 and 299 is 514579");
         }
 
         [Fact]
-        public void SolveProblem_WhenNo2NumbersAddUpTo2020_ThenThrowsException()
+        public void SolveProblemAsync_WhenNo2NumbersAddUpTo2020_ThenThrowsException()
         {
-            _inputProvider.ProvideInput().Returns(new[] { 1721, 979, 366, 300, 675, 1456 });
+            _inputProvider.ProvideInputAsync().Returns(new[] { 1721, 979, 366, 300, 675, 1456 }.ToAsyncEnumerable());
 
-            var action = new Action(() => _subject.SolveProblem());
+            var action = new Func<Task>(async () => await _subject.SolveProblemAsync());
 
             action.Should().Throw<Exception>();
         }
 
         [Fact]
-        public void SolveBonusProblem_When3NumbersAddUpTo2020_ThenReturnsProductOfThoseNumbers()
+        public async Task SolveBonusProblemAsync_When3NumbersAddUpTo2020_ThenReturnsProductOfThoseNumbers()
         {
-            _inputProvider.ProvideInput().Returns(new[] { 1721, 979, 366, 299, 675, 1456 });
+            _inputProvider.ProvideInputAsync().Returns(new[] { 1721, 979, 366, 299, 675, 1456 }.ToAsyncEnumerable());
 
-            var result = _subject.SolveBonusProblem();
+            var result = await _subject.SolveBonusProblemAsync();
 
             result.Should().Be(241861950, "the product of 979, 366 and 675 is 241861950");
         }
 
         [Fact]
-        public void SolveBonusProblem_WhenNo3NumbersAddUpTo2020_ThenThrowsException()
+        public void SolveBonusProblemAsync_WhenNo3NumbersAddUpTo2020_ThenThrowsException()
         {
-            _inputProvider.ProvideInput().Returns(new[] { 1721, 979, 366, 299, 676, 1456 });
+            _inputProvider.ProvideInputAsync().Returns(new[] { 1721, 979, 366, 299, 676, 1456 }.ToAsyncEnumerable());
 
-            var action = new Action(() => _subject.SolveBonusProblem());
+            var action = new Func<Task>(async () => await _subject.SolveBonusProblemAsync());
 
             action.Should().Throw<Exception>();
         }

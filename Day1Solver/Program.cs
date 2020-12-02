@@ -1,14 +1,18 @@
 ﻿using System;
+using System.Threading.Tasks;
 
 namespace Day1Solver
 {
     internal class Program
     {
-        static void Main(string[] args)
+        public static async Task Main(string[] args)
         {
             var solver = new Solver(new InputProvider());
-            Console.WriteLine($"Solution for Day 1 is {solver.SolveProblem()}");
-            Console.WriteLine($"Bonus solution for Day 1 is {solver.SolveBonusProblem()}");
+            var solution = solver.SolveProblemAsync();
+            var bonusSolution = solver.SolveBonusProblemAsync();
+
+            Console.WriteLine($"Solution for Day 1 is {await solution}");
+            Console.WriteLine($"Bonus solution for Day 1 is {await bonusSolution}");
         }
     }
 }

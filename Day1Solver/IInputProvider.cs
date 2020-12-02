@@ -4,6 +4,6 @@ namespace Day1Solver
 {
     internal interface IInputProvider
     {
-        IEnumerable<int> ProvideInput();
+        IAsyncEnumerable<int> ProvideInputAsync();
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace Day1Solver
 {
@@ -13,9 +14,9 @@ namespace Day1Solver
             _inputProvider = inputProvider;
         }
 
-        public int SolveProblem()
+        public async Task<int> SolveProblemAsync()
         {
-            var input = _inputProvider.ProvideInput().ToList();
+            var input = await _inputProvider.ProvideInputAsync().ToListAsync();
 
             for (var i = 0; i < input.Count; i++)
                 for (var j = i + 1; j < input.Count; j++)
@@ -29,9 +30,9 @@ namespace Day1Solver
             throw new Exception("Cannont find the two magic numbers");
         }
 
-        public int SolveBonusProblem()
+        public async Task<int> SolveBonusProblemAsync()
         {
-            var input = _inputProvider.ProvideInput().ToList();
+            var input = await _inputProvider.ProvideInputAsync().ToListAsync();
 
             for (var i = 0; i < input.Count; i++)
                 for (var j = i + 1; j < input.Count; j++)
