@@ -6,7 +6,8 @@ namespace Day1Solver
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            var solver = new Solver(new InputProvider());
+            Console.WriteLine($"Solution for Day 1 is {solver.SolveProblem()}");
         }
     }
 }
