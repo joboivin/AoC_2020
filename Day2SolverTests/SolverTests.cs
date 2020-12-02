@@ -21,11 +21,11 @@ namespace Day2SolverTests
         }
 
         [Fact]
-        public async Task SolveProblem_WhenInputHas0ValidElementAnd1InvalidElement_ThenReturns1()
+        public async Task SolveProblem_WhenInputHas1ValidElementAnd0InvalidElement_ThenReturns1()
         {
-            var invalidEntry = Substitute.For<PasswordEntry>();
-            invalidEntry.IsValid.Returns(false);
-            _inputProvider.ProvideInputAsync().Returns(new[] { invalidEntry }.ToAsyncEnumerable());
+            var validEntry = Substitute.For<PasswordEntry>();
+            validEntry.IsValid.Returns(true);
+            _inputProvider.ProvideInputAsync().Returns(new[] { validEntry }.ToAsyncEnumerable());
 
             var result = await _subject.SolveProblemAsync();
 
@@ -33,31 +33,31 @@ namespace Day2SolverTests
         }
 
         [Fact]
-        public async Task SolveProblem_WhenInputHas2ValidElementsAnd1InvalidElement_ThenReturns1()
+        public async Task SolveProblem_WhenInputHas1ValidElementAnd2InvalidElements_ThenReturns1()
         {
-            var invalidEntry = Substitute.For<PasswordEntry>();
-            invalidEntry.IsValid.Returns(false);
-            var validEntry1 = Substitute.For<PasswordEntry>();
-            validEntry1.IsValid.Returns(true);
-            var validEntry2 = Substitute.For<PasswordEntry>();
-            validEntry2.IsValid.Returns(true);
-            _inputProvider.ProvideInputAsync().Returns(new[] { validEntry1, invalidEntry, validEntry2 }.ToAsyncEnumerable());
-
-            var result = await _subject.SolveProblemAsync();
-
-            result.Should().Be(1);
-        }
-
-        [Fact]
-        public async Task SolveProblem_WhenInputHas1ValidElementAnd2InvalidElements_ThenReturns2()
-        {
+            var validEntry = Substitute.For<PasswordEntry>();
+            validEntry.IsValid.Returns(true);
             var invalidEntry1 = Substitute.For<PasswordEntry>();
             invalidEntry1.IsValid.Returns(false);
             var invalidEntry2 = Substitute.For<PasswordEntry>();
             invalidEntry2.IsValid.Returns(false);
-            var validEntry = Substitute.For<PasswordEntry>();
-            validEntry.IsValid.Returns(true);
-            _inputProvider.ProvideInputAsync().Returns(new[] { invalidEntry2, invalidEntry1, validEntry }.ToAsyncEnumerable());
+            _inputProvider.ProvideInputAsync().Returns(new[] { invalidEntry1, validEntry, invalidEntry2 }.ToAsyncEnumerable());
+
+            var result = await _subject.SolveProblemAsync();
+
+            result.Should().Be(1);
+        }
+
+        [Fact]
+        public async Task SolveProblem_WhenInputHas2ValidElementsAnd1InvalidElement_ThenReturns2()
+        {
+            var validEntry1 = Substitute.For<PasswordEntry>();
+            validEntry1.IsValid.Returns(true);
+            var validEntry2 = Substitute.For<PasswordEntry>();
+            validEntry2.IsValid.Returns(true);
+            var invalidEntry = Substitute.For<PasswordEntry>();
+            invalidEntry.IsValid.Returns(false);
+            _inputProvider.ProvideInputAsync().Returns(new[] { validEntry2, validEntry1, invalidEntry }.ToAsyncEnumerable());
 
             var result = await _subject.SolveProblemAsync();
 

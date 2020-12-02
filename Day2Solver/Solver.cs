@@ -16,7 +16,7 @@ namespace Day2Solver
         {
             var input = _inputProvider.ProvideInputAsync();
 
-            return input.CountAsync(p => !p.IsValid);
+            return input.CountAsync(p => p.IsValid);
         }
     }
 }
