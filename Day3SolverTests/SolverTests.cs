@@ -11,13 +11,23 @@ namespace Day3SolverTests
     public class SolverTests
     {
         [Fact]
-        public async Task SolveProblem_WhenUsingInputFromAoC_ThenResultIs7()
+        public async Task SolveProblemAsync_WhenUsingInputFromAoC_ThenResultIs7()
         {
             var subject = new Solver(new InputProvider(SetupRawInputProvider()));
 
-            var result = await subject.SolveProblem();
+            var result = await subject.SolveProblemAsync();
 
             result.Should().Be(7, "it's the answer provided so we trust it");
+        }
+
+        [Fact]
+        public async Task SolveBonusProblemAsync_WhenUsingInputFromAoC_ThenResultIs336()
+        {
+            var subject = new Solver(new InputProvider(SetupRawInputProvider()));
+
+            var result = await subject.SolveBonusProblemAsync();
+
+            result.Should().Be(336, "it's the answer provided so we trust it");
         }
 
         private IRawInputProvider SetupRawInputProvider()
