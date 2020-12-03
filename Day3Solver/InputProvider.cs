@@ -17,7 +17,7 @@ namespace Day3Solver
         {
             var forest = new Forest { VisibleForest = new List<List<char>>() };
 
-            await foreach (var input in _rawInputProvider.ProvideRawInput())
+            await foreach (var input in _rawInputProvider.ProvideRawInputAsync())
                 forest.VisibleForest.Add(input.ToCharArray().ToList());
 
             return forest;

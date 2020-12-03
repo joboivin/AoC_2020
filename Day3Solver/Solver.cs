@@ -11,7 +11,7 @@ namespace Day3Solver
             _inputProvider = inputProvider;
         }
 
-        public async Task<int> SolveProblem()
+        public async Task<int> SolveProblemAsync()
         {
             const int verticalProgression = 1;
             const int horizontalProgression = 3;

@@ -4,6 +4,6 @@ namespace Day3Solver
 {
     internal interface IRawInputProvider
     {
-        IAsyncEnumerable<string> ProvideRawInput();
+        IAsyncEnumerable<string> ProvideRawInputAsync();
     }
 }

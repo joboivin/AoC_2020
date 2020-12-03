@@ -24,7 +24,7 @@ namespace Day3SolverTests
         {
             var rawInputProvider = Substitute.For<IRawInputProvider>();
 
-            rawInputProvider.ProvideRawInput().Returns(new[]
+            rawInputProvider.ProvideRawInputAsync().Returns(new[]
             {
                 "..##.......",
                 "#...#...#..",

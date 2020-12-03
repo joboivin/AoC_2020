@@ -23,7 +23,7 @@ namespace Day3SolverTests
         [Fact]
         public async Task ProvideInput_When1LineInRawInput_ThenForestHeightIs1()
         {
-            _rawInputProvider.ProvideRawInput().Returns(new[] { "...#..." }.ToAsyncEnumerable());
+            _rawInputProvider.ProvideRawInputAsync().Returns(new[] { "...#..." }.ToAsyncEnumerable());
 
             var result = await _subject.ProvideInputAsync();
 
@@ -33,7 +33,7 @@ namespace Day3SolverTests
         [Fact]
         public async Task ProvideInput_When1LineInRawInput_ThenForestTreesAndOpenSquareParsedCorrectly()
         {
-            _rawInputProvider.ProvideRawInput().Returns(new[] { "...#..." }.ToAsyncEnumerable());
+            _rawInputProvider.ProvideRawInputAsync().Returns(new[] { "...#..." }.ToAsyncEnumerable());
 
             var result = await _subject.ProvideInputAsync();
 
@@ -50,7 +50,7 @@ namespace Day3SolverTests
         [Fact]
         public async Task ProvideInput_When2LinesInRawInput_ThenForestHeightIs2()
         {
-            _rawInputProvider.ProvideRawInput().Returns(new[] { "...#...", "##..##." }.ToAsyncEnumerable());
+            _rawInputProvider.ProvideRawInputAsync().Returns(new[] { "...#...", "##..##." }.ToAsyncEnumerable());
 
             var result = await _subject.ProvideInputAsync();
 
@@ -60,7 +60,7 @@ namespace Day3SolverTests
         [Fact]
         public async Task ProvideInput_When2LinesInRawInput_ThenForestTreesAndOpenSquareParsedCorrectlyInSecondLine()
         {
-            _rawInputProvider.ProvideRawInput().Returns(new[] { "...#...", "##..##." }.ToAsyncEnumerable());
+            _rawInputProvider.ProvideRawInputAsync().Returns(new[] { "...#...", "##..##." }.ToAsyncEnumerable());
 
             var result = await _subject.ProvideInputAsync();
 
