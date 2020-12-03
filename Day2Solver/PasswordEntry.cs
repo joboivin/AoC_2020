@@ -18,5 +18,13 @@ namespace Day2Solver
                 return mandatoryCharOccurence.Count >= MinOccurence && mandatoryCharOccurence.Count <= MaxOccurence;
             }
         }
+
+        public virtual bool IsValidForBonus
+        {
+            get
+            {
+                return Password[MinOccurence - 1] == MandatoryChar ^ Password[MaxOccurence - 1] == MandatoryChar;
+            }
+        }
     }
 }

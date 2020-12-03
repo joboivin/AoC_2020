@@ -65,5 +65,45 @@ namespace Day2SolverTests
 
             result.Should().BeFalse();
         }
+
+        [Fact]
+        public void IsValidForBonus_WhenFirstPositionIsMandatoryCharAndSecondPositionIsNotMandatoryChar_ThenTrue()
+        {
+            var subject = new PasswordEntry { MinOccurence = 2, MaxOccurence = 4, MandatoryChar = 'c', Password = "accde" };
+
+            var result = subject.IsValidForBonus;
+
+            result.Should().BeTrue();
+        }
+
+        [Fact]
+        public void IsValidForBonus_WhenFirstPositionIsNotMandatoryCharAndSecondPositionIsMandatoryChar_ThenTrue()
+        {
+            var subject = new PasswordEntry { MinOccurence = 2, MaxOccurence = 4, MandatoryChar = 'c', Password = "abcce" };
+
+            var result = subject.IsValidForBonus;
+
+            result.Should().BeTrue();
+        }
+
+        [Fact]
+        public void IsValidForBonus_WhenFirstPositionIsMandatoryCharAndSecondPositionIsMandatoryChar_ThenFalse()
+        {
+            var subject = new PasswordEntry { MinOccurence = 2, MaxOccurence = 4, MandatoryChar = 'c', Password = "accce" };
+
+            var result = subject.IsValidForBonus;
+
+            result.Should().BeFalse();
+        }
+
+        [Fact]
+        public void IsValidForBonus_WhenFirstPositionIsNotMandatoryCharAndSecondPositionIsNotMandatoryChar_ThenFalse()
+        {
+            var subject = new PasswordEntry { MinOccurence = 2, MaxOccurence = 4, MandatoryChar = 'c', Password = "abcde" };
+
+            var result = subject.IsValidForBonus;
+
+            result.Should().BeFalse();
+        }
     }
 }

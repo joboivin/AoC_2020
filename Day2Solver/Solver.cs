@@ -18,5 +18,12 @@ namespace Day2Solver
 
             return input.CountAsync(p => p.IsValid);
         }
+
+        public ValueTask<int> SolveBonusProblemAsync()
+        {
+            var input = _inputProvider.ProvideInputAsync();
+
+            return input.CountAsync(p => p.IsValidForBonus);
+        }
     }
 }
