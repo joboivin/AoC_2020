@@ -18,5 +18,12 @@ namespace Day4Solver
 
             return passports.Count(p => p.IsValid());
         }
+
+        public async Task<int> SolveBonusProblemAsync()
+        {
+            var passports = await _inputProvider.ProvideInputAsync();
+
+            return passports.Count(p => p.IsValidForBonus());
+        }
     }
 }

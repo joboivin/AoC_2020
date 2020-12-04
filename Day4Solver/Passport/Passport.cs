@@ -1,24 +1,24 @@
 ﻿using System;
 
-namespace Day4Solver
+namespace Day4Solver.Passport
 {
     internal class Passport
     {
-        private string _birthYear;
-        private string _issueYear;
-        private string _expirationYear;
-        private string _height;
-        private string _hairColor;
-        private string _eyeColor;
-        private string _passportID;
-        private string _countryID;
+        private BirthYear _birthYear;
+        private IssueYear _issueYear;
+        private ExpirationYear _expirationYear;
+        private Height _height;
+        private HairColor _hairColor;
+        private EyeColor _eyeColor;
+        private PassportID _passportID;
+        private CountryID _countryID;
 
         public void SetBirthYear(string birthYear)
         {
             if (_birthYear != null)
                 throw new Exception("Birth Year already set");
 
-            _birthYear = birthYear;
+            _birthYear = new BirthYear(birthYear);
         }
 
         public void SetIssueYear(string issueYear)
@@ -26,7 +26,7 @@ namespace Day4Solver
             if (_issueYear != null)
                 throw new Exception("Issue Year already set");
 
-            _issueYear = issueYear;
+            _issueYear = new IssueYear(issueYear);
         }
 
         public void SetExpirationYear(string expirationYear)
@@ -34,7 +34,7 @@ namespace Day4Solver
             if (_expirationYear != null)
                 throw new Exception("Expiration Year already set");
 
-            _expirationYear = expirationYear;
+            _expirationYear = new ExpirationYear(expirationYear);
         }
 
         public void SetHeight(string height)
@@ -42,7 +42,7 @@ namespace Day4Solver
             if (_height != null)
                 throw new Exception("Height already set");
 
-            _height = height;
+            _height = new Height(height);
         }
 
         public void SetHairColor(string hairColor)
@@ -50,7 +50,7 @@ namespace Day4Solver
             if (_hairColor != null)
                 throw new Exception("Hair Color already set");
 
-            _hairColor = hairColor;
+            _hairColor = new HairColor(hairColor);
         }
 
         public void SetEyeColor(string eyeColor)
@@ -58,7 +58,7 @@ namespace Day4Solver
             if (_eyeColor != null)
                 throw new Exception("Eye Color already set");
 
-            _eyeColor = eyeColor;
+            _eyeColor = new EyeColor(eyeColor);
         }
 
         public void SetPassportID(string passportID)
@@ -66,7 +66,7 @@ namespace Day4Solver
             if (_passportID != null)
                 throw new Exception("Passport ID already set");
 
-            _passportID = passportID;
+            _passportID = new PassportID(passportID);
         }
 
         public void SetCountryID(string countryID)
@@ -74,15 +74,21 @@ namespace Day4Solver
             if (_countryID != null)
                 throw new Exception("Country ID already set");
 
-            _countryID = countryID;
+            _countryID = new CountryID(countryID);
         }
 
         public bool IsValid()
         {
-            return !string.IsNullOrWhiteSpace(_birthYear) && !string.IsNullOrWhiteSpace(_issueYear) &&
-                   !string.IsNullOrWhiteSpace(_expirationYear) && !string.IsNullOrWhiteSpace(_height) &&
-                   !string.IsNullOrWhiteSpace(_hairColor) && !string.IsNullOrWhiteSpace(_eyeColor) &&
-                   !string.IsNullOrWhiteSpace(_passportID);
+            return (_birthYear?.IsValid() ?? false) && (_issueYear?.IsValid() ?? false) && (_expirationYear?.IsValid() ?? false) &&
+                   (_height?.IsValid() ?? false) && (_hairColor?.IsValid() ?? false) && (_eyeColor?.IsValid() ?? false) &&
+                   (_passportID?.IsValid() ?? false);
+        }
+
+        public bool IsValidForBonus()
+        {
+            return (_birthYear?.IsValidForBonus() ?? false) && (_issueYear?.IsValidForBonus() ?? false) && (_expirationYear?.IsValidForBonus() ?? false) &&
+                   (_height?.IsValidForBonus() ?? false) && (_hairColor?.IsValidForBonus() ?? false) && (_eyeColor?.IsValidForBonus() ?? false) &&
+                   (_passportID?.IsValidForBonus() ?? false);
         }
     }
 }

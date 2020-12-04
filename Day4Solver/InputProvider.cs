@@ -13,16 +13,16 @@ namespace Day4Solver
             _rawInputProvider = rawInputProvider;
         }
 
-        public async Task<IReadOnlyCollection<Passport>> ProvideInputAsync()
+        public async Task<IReadOnlyCollection<Passport.Passport>> ProvideInputAsync()
         {
-            var passports = new List<Passport>();
-            Passport newPassport = null;
+            var passports = new List<Passport.Passport>();
+            Passport.Passport newPassport = null;
 
             await foreach (var rawInput in _rawInputProvider.ProvideRawInputAsync())
             {
                 if (newPassport == null)
                 {
-                    newPassport = new Passport();
+                    newPassport = new Passport.Passport();
                     passports.Add(newPassport);
                 }
 
@@ -35,7 +35,7 @@ namespace Day4Solver
             return passports;
         }
 
-        private void SetPassportInfos(Passport passport, string line)
+        private void SetPassportInfos(Passport.Passport passport, string line)
         {
             const int lengthOfInfoCode = 3;
             const int lengthOfInfoCodeWithSeparator = lengthOfInfoCode + 1;
@@ -49,7 +49,7 @@ namespace Day4Solver
                 SetPassportInfos(passport, line.Substring(info.Length + lengthOfInfoCodeWithSeparator + 1));
         }
 
-        private void SetPassportInfo(Passport passport, string infoCode, string info)
+        private void SetPassportInfo(Passport.Passport passport, string infoCode, string info)
         {
             switch (infoCode)
             {

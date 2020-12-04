@@ -5,6 +5,6 @@ namespace Day4Solver
 {
     internal interface IInputProvider
     {
-        Task<IReadOnlyCollection<Passport>> ProvideInputAsync();
+        Task<IReadOnlyCollection<Passport.Passport>> ProvideInputAsync();
     }
 }
