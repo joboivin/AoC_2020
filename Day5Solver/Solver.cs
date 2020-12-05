@@ -18,5 +18,25 @@ namespace Day5Solver
         {
             return _rawInputProvider.ProvideRawInputAsync().Select(input => _seatIdFinder.FindSeatId(input)).MaxAsync().AsTask();
         }
+
+        public async Task<int> SolveBonusProblemAsync()
+        {
+            var allSeatIds = await _rawInputProvider.ProvideRawInputAsync().Select(input => _seatIdFinder.FindSeatId(input)).OrderBy(id => id).ToListAsync();
+
+            var seatId = allSeatIds[0];
+
+            for (var i = 1; i < allSeatIds.Count; i++)
+            {
+                if (allSeatIds[i] - seatId != 1)
+                {
+                    seatId++;
+                    break;
+                }
+
+                seatId = allSeatIds[i];
+            }
+
+            return seatId;
+        }
     }
 }

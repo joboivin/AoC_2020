@@ -10,10 +10,10 @@ namespace Day4Solver
         {
             var solver = new Solver(new SeatIdFinder(new RowFinder(), new ColumnFinder()), new RawInputProvider());
             var solution = solver.SolveProblemAsync();
-            //var bonusSolution = solver.SolveBonusProblemAsync();
+            var bonusSolution = solver.SolveBonusProblemAsync();
 
             Console.WriteLine($"Solution for Day 5 is {await solution}");
-            //Console.WriteLine($"Bonus solution for Day 4 is {await bonusSolution}");
+            Console.WriteLine($"Bonus solution for Day 5 is {await bonusSolution}");
         }
     }
 }
