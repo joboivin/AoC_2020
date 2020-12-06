@@ -1,8 +1,7 @@
-﻿using Day5Solver;
-using System;
+﻿using System;
 using System.Threading.Tasks;
 
-namespace Day4Solver
+namespace Day5Solver
 {
     internal class Program
     {
