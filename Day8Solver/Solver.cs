@@ -48,19 +48,18 @@ namespace Day8Solver
                     operationsCopy[i] = operationsCopy[i].Replace("jmp", "nop");
 
                 var executor = new OperationExecutor(operationsCopy);
-                unCorruptionAttempts.Add(TryToExecuteUncorruptedProgram(new Task<int>(executor.Execute)));
+                unCorruptionAttempts.Add(TryToExecuteUncorruptedProgram(Task.Run(executor.Execute)));
             }
 
-            await Task.WhenAll(unCorruptionAttempts);
+            var attemptsResult = await Task.WhenAll(unCorruptionAttempts);
 
-            return unCorruptionAttempts.Single(t => t.Result.HasValue).Result.Value;
+            return attemptsResult.Sum(r => r ?? 0);
         }
 
         private async Task<int?> TryToExecuteUncorruptedProgram(Task<int> uncorruptionAttempt)
         {
             try
             {
-                uncorruptionAttempt.Start();
                 return await uncorruptionAttempt;
             }
             catch (InfiniteLoopException)
