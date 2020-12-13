@@ -7,6 +7,7 @@ using Xunit;
 
 namespace Day11SolverTests
 {
+    [Trait("Category", "Functionnal")]
     public class SolverFunctionnalTests
     {
         private readonly IInputProvider _inputProvider;
